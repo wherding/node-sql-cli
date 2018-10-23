@@ -1,0 +1,26 @@
+{
+  "name": "bamazoncustomer",
+  "version": "1.1.1",
+  "description": "bamazoncuztomer for bootcamp",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wherding/node-sql-cli.git"
+  },
+  "keywords": [
+    "bootcamp"
+  ],
+  "author": "will",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wherding/node-sql-cli/issues"
+  },
+  "homepage": "https://github.com/wherding/node-sql-cli#readme",
+  "dependencies": {
+    "inquirer": "^6.2.0",
+    "mysql": "^2.16.0"
+  }
+}
