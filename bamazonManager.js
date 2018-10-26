@@ -1,6 +1,6 @@
 var mysql      = require('mysql');
 var inquirer = require('inquirer');
-var table = require('table')
+//var table = require('table')
 
 
 //output = table(data)
@@ -109,7 +109,17 @@ function addNew(){
             message: "enter the stock_quantity of the item you would like to add to inventory."
         },//end questions
     ]).then(answers => {
-      checkSupply(answers.idOfItem,answers.howMany)
+        var query = connection.query('INSERT INTO products SET ?', 
+            { product_name:answers.nameOfItem,
+                department_name: answers.department_nameOfItem,
+                price: answers.priceOfItem,
+                stock_quantity: answers.stock_quantityOfItem
+        }, function (error, results, fields) {
+            if (error) throw error;
+            // Neat!
+            console.log("added new item: " + answers.nameOfItem)
+          });
+          connection.end();
     });
 }
 /*************** start addNew() *****************/
