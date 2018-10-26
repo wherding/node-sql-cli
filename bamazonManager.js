@@ -44,6 +44,18 @@ connection.query('SELECT * from products', function (error, results, fields) {
  
 connection.end();
 };//end viewAll()
+/*********begin view low */
+function viewLow(){
+    connection.query('SELECT product_name from products where stock_quantity < 10', function (error, results, fields) {
+        if (error) throw error;
+    console.log("the products below have a stock less than 10:");
+    results.forEach(e => {
+        console.log(e.product_name)
+    });
+      });
+       
+      connection.end();
+};
 /***************************start update********** */
 function updateAmt(id,num){
       connection.query("UPDATE products SET ? WHERE ?", [{
@@ -145,6 +157,7 @@ inquirer.prompt([/* Pass your questions in here */
             
             case'View Low Inventory':
             console.log("you picked: ''View Low Inventory''")
+            viewLow();
             break;
             
             case'Add to Inventory':
