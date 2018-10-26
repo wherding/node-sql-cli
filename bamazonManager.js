@@ -31,7 +31,6 @@ function viewAll(){
     };
 
 connection.connect();
- 
 connection.query('SELECT * from products', function (error, results, fields) {
   if (error) throw error;
   //results.toarray();
@@ -70,7 +69,6 @@ function checkSupply(id,num){
     /*************************end check funct *******************************/
 /*************************start add funct *******************************/
 function addInventory(){
-    
 inquirer.prompt([/* Pass your questions in here */
     {
         name: "idOfItem",
@@ -84,13 +82,37 @@ inquirer.prompt([/* Pass your questions in here */
       },//end questions
 ]).then(answers => {
   checkSupply(answers.idOfItem,answers.howMany)
-
-
 });
-
 }//end addInventory()
 //above this is my test connection below this is the start of my inquiere
-
+/*************** start addNew() *****************/
+function addNew(){
+    inquirer.prompt([/* Pass your questions in here */
+        {
+            name: "nameOfItem",
+            type: "input",
+            message: "enter the product_name of the item you would like to add to inventory.",
+          },
+          {
+              name: 'department_nameOfItem',
+              type: 'input',
+              message: "enter the department_name of the item you would like to add to inventory."
+          },
+          {
+              name: 'priceOfItem',
+              type: 'input',
+              message: "enter the price of the item you would like to add to inventory."
+          },
+          {
+            name: 'stock_quantityOfItem',
+            type: 'input',
+            message: "enter the stock_quantity of the item you would like to add to inventory."
+        },//end questions
+    ]).then(answers => {
+      checkSupply(answers.idOfItem,answers.howMany)
+    });
+}
+/*************** start addNew() *****************/
 
 inquirer.prompt([/* Pass your questions in here */
 {
@@ -122,6 +144,7 @@ inquirer.prompt([/* Pass your questions in here */
 
             case'Add New Product':
             console.log("you picked: 'Add New Product'")
+            addNew();
             break;
 
     
